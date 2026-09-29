@@ -1,0 +1,6 @@
+[2026-09-29 16:30:38,682] INFO in app: Database initialized
+[2026-09-29 16:30:38,686] INFO in app: ✅ App started in 'development' mode
+[2026-09-29 16:30:38,686] INFO in app: Starting server on 0.0.0.0:5000 (debug=True)
+[2026-09-29 16:30:40,065] INFO in app: Database initialized
+[2026-09-29 16:30:40,066] INFO in app: ✅ App started in 'development' mode
+[2026-09-29 16:30:40,067] INFO in app: Starting server on 0.0.0.0:5000 (debug=True)

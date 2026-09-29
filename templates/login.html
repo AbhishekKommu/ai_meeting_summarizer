@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Login · AI Meeting Summarizer{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+  <div class="glass-panel auth-panel">
+    <h1><i class="fas fa-microchip"></i> AI Meeting Summarizer</h1>
+    <p class="subhead">Log in to summarize your meetings</p>
+
+    <form method="POST" action="{{ url_for('login') }}" class="auth-form">
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username or Email" required autofocus />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+      <button type="submit" class="btn-primary">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+
+    <p class="auth-alt">
+      Don't have an account? <a href="{{ url_for('register') }}">Register</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

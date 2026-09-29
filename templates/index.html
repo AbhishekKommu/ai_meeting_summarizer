@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · AI Meeting Summarizer{% endblock %}
+
+{% block content %}
+<div class="glass-panel main-panel">
+  <h1><i class="fas fa-waveform"></i> Welcome, {{ username }}</h1>
+  <div class="subhead">
+    <i class="fas fa-bolt"></i> Upload a meeting recording to generate a summary.
+  </div>
+
+  <!-- Upload area -->
+  <div class="upload-area">
+    <label for="fileInput" class="file-label" id="fileLabel">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <span id="fileNameDisplay">Choose audio file…</span>
+    </label>
+    <input type="file" id="fileInput" accept="audio/*,video/*" />
+    <button class="btn-summarize" id="summarizeBtn">
+      <i class="fas fa-wand-magic-sparkles"></i> Summarize
+    </button>
+  </div>
+
+  <!-- Live summary output -->
+  <div class="summary-container">
+    <div class="summary-header">
+      <i class="fas fa-file-lines"></i>
+      <span>Latest Summary</span>
+      <span id="statusBadge" class="status-badge" style="display:none;">
+        <i class="fas fa-circle-check"></i> Ready
+      </span>
+    </div>
+    <div id="summaryText">
+      <div class="placeholder-text">
+        <i class="fas fa-arrow-up"></i> Upload a file and click Summarize
+      </div>
+    </div>
+  </div>
+
+  <!-- History -->
+  <div class="history-container">
+    <div class="summary-header">
+      <i class="fas fa-clock-rotate-left"></i>
+      <span>Your Meeting History</span>
+    </div>
+    {% if meetings %}
+      <ul class="history-list">
+        {% for m in meetings %}
+          <li class="history-item" data-summary="{{ m['summary']|e }}">
+            <div class="history-meta">
+              <i class="fas fa-file-audio"></i>
+              <strong>{{ m['filename'] }}</strong>
+            </div>
+            <div class="history-date">{{ m['created_at'] }}</div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty-history">No meetings summarized yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
